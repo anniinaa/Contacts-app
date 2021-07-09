@@ -1,0 +1,25 @@
+.contacts {
+  text-align: center;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.272);
+  height: 450px;
+  width: 50%;
+
+  .button {
+    margin-top: 5px;
+    font-family: "Rubik", sans-serif;
+    font-size: 13px;
+    background-color: rgba(238, 102, 102, 0.571);
+  }
+
+  .names {
+    ul {
+      text-align: left;
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+    li {
+      list-style: none;
+    }
+  }
+}
