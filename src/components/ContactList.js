@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
 import ContactForm from "./ContactForm";
 import { Modal } from "@material-ui/core";
+import { db } from "./firebase_config";
 
 function ContactList() {
   const [open, setOpen] = React.useState(false);
+  const [contactList, setContactList] = useState([]);
+
+  useEffect(() => {
+    getContacts();
+  }, []);
 
   const handleOpen = () => {
     setOpen(true);
@@ -13,6 +19,24 @@ function ContactList() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const getContacts = async () => {
+    db.collection("contacts").onSnapshot((querySnaphot) => {
+      setContactList(
+        querySnaphot.docs.map((doc) => ({
+          id: doc.id,
+          name: doc.data().name,
+          address: doc.data().address,
+          zipcode: doc.data().zipcode,
+          city: doc.data().city,
+          phone: doc.data().phone,
+          time: doc.data().Time,
+        }))
+      );
+    });
+  };
+
+  const openDetails = () => {};
 
   return (
     <div className="contacts">
@@ -23,14 +47,15 @@ function ContactList() {
         <ContactForm />
       </Modal>
       <div className="names">
-        <ul>
-          <li>anniina aarnio</li>
-          <li>anniina aarnio</li>
-          <li>anniina aarnio</li>
-          <li>anniina aarnio</li>
-          <li>anniina aarnio</li>
-          <li>anniina aarnio</li>
-        </ul>
+        {contactList.map((contact) => {
+          return (
+            <div city={contact.city}>
+              <a href={contact.name} onClick={openDetails}>
+                {contact.name}
+              </a>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
