@@ -4,7 +4,7 @@ import { TextField, Zoom } from "@material-ui/core";
 import { db } from "./firebase_config";
 import firebase from "firebase";
 
-function ContactForm() {
+function ContactForm(props) {
   //   const [contact, setContact] = useState({
   //     name: "",
   //     address: "",
@@ -38,7 +38,9 @@ function ContactForm() {
   return (
     <div className="form">
       <form className="new-contact">
+        <Button onClick={() => props.onClose()}>X</Button>
         <TextField
+          required={true} // ei toimi?
           onChange={(e) => setName(e.target.value)}
           value={name}
           type="text"

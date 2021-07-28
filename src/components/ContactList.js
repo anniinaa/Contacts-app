@@ -21,19 +21,21 @@ function ContactList() {
   };
 
   const getContacts = async () => {
-    db.collection("contacts").onSnapshot((querySnaphot) => {
-      setContactList(
-        querySnaphot.docs.map((doc) => ({
-          id: doc.id,
-          name: doc.data().name,
-          address: doc.data().address,
-          zipcode: doc.data().zipcode,
-          city: doc.data().city,
-          phone: doc.data().phone,
-          time: doc.data().Time,
-        }))
-      );
-    });
+    db.collection("contacts")
+      .orderBy("name")
+      .onSnapshot((querySnaphot) => {
+        setContactList(
+          querySnaphot.docs.map((doc) => ({
+            id: doc.id,
+            name: doc.data().name,
+            address: doc.data().address,
+            zipcode: doc.data().zipcode,
+            city: doc.data().city,
+            phone: doc.data().phone,
+            time: doc.data().Time,
+          }))
+        );
+      });
   };
 
   const openDetails = () => {};
@@ -44,7 +46,7 @@ function ContactList() {
         add new contact
       </Button>
       <Modal open={open} onClose={handleClose}>
-        <ContactForm />
+        <ContactForm onClose={handleClose} />
       </Modal>
       <div className="names">
         {contactList.map((contact) => {
@@ -53,6 +55,13 @@ function ContactList() {
               <a href={contact.name} onClick={openDetails}>
                 {contact.name}
               </a>
+              <button
+                onClick={() =>
+                  db.collection("contacts").doc(contact.id).delete()
+                }
+              >
+                X
+              </button>
             </div>
           );
         })}
