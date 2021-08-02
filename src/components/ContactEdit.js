@@ -2,25 +2,28 @@ import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import { TextField } from "@material-ui/core";
 import { db } from "./firebase_config";
-import firebase from "firebase";
 
-const ContactForm = (props) => {
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [zipcode, setZipcode] = useState("");
-  const [city, setCity] = useState("");
-  const [phone, setPhone] = useState("");
+const ContactEdit = (props) => {
+  const { selectedContact } = props;
 
-  const addContact = (e) => {
+  const [name, setName] = useState(selectedContact.name);
+  const [address, setAddress] = useState(selectedContact.address);
+  const [zipcode, setZipcode] = useState(selectedContact.zipcode);
+  const [city, setCity] = useState(selectedContact.city);
+  const [phone, setPhone] = useState(selectedContact.phone);
+
+  const editContact = async (e) => {
     e.preventDefault();
-    db.collection("contacts").add({
+    const data = {
       name: name,
+      id: selectedContact.id,
       address: address,
       zipcode: zipcode,
       city: city,
       phone: phone,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    });
+    };
+    await db.collection("contacts").doc(selectedContact.id).set(data);
+    props.setSelectedContact(data);
     props.onClose(false);
   };
 
@@ -56,12 +59,12 @@ const ContactForm = (props) => {
           value={phone}
           placeholder="phone number"
         ></TextField>
-        <Button onClick={addContact} type="submit">
-          Add contact
+        <Button onClick={editContact} type="submit">
+          Edit contact
         </Button>
       </form>
     </div>
   );
 };
 
-export default ContactForm;
+export default ContactEdit;
