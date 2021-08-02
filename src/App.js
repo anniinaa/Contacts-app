@@ -16,25 +16,26 @@ function App() {
   };
 
   useEffect(() => {
-    const getContacts = async () => {
-      db.collection("contacts")
-        .orderBy("name")
-        .onSnapshot((querySnaphot) => {
-          setContactList(
-            querySnaphot.docs.map((doc) => ({
-              id: doc.id,
-              name: doc.data().name,
-              address: doc.data().address,
-              zipcode: doc.data().zipcode,
-              city: doc.data().city,
-              phone: doc.data().phone,
-              time: doc.data().Time,
-            }))
-          );
-        });
-    };
     getContacts();
   }, []);
+
+  const getContacts = async () => {
+    db.collection("contacts")
+      .orderBy("name")
+      .onSnapshot((querySnaphot) => {
+        setContactList(
+          querySnaphot.docs.map((doc) => ({
+            id: doc.id,
+            name: doc.data().name,
+            address: doc.data().address,
+            zipcode: doc.data().zipcode,
+            city: doc.data().city,
+            phone: doc.data().phone,
+            time: doc.data().Time,
+          }))
+        );
+      });
+  };
 
   return (
     <div className="app">
