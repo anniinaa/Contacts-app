@@ -22,9 +22,9 @@ function Details(props) {
       <div className="card">
         <h4 className="name">{props.selectedContact.name}</h4>
         <p className="address">{props.selectedContact.address}</p>
-        <p className="zip"></p>
-        <p className="city"></p>
-        <p className="phoneNumber"></p>
+        <p className="zip">{props.selectedContact.zipcode}</p>
+        <p className="city">{props.selectedContact.city}</p>
+        <p className="phoneNumber">{props.selectedContact.phone}</p>
       </div>
       <Button onClick={handleOpenEditModal} className="button">
         Edit contact
