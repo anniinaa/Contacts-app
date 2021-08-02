@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css2?family=Rubik:ital@1&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Encode+Sans+SC&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);
 footer {
   position: fixed;
   left: 0;
@@ -22,18 +23,64 @@ footer {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: auto;
   width: 70%;
+  margin: auto;
 }
 
-.details-app {
+.detail-card .card {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding: 15px;
+}
+
+.detail-card .card .contact-info {
+  font-size: 18px;
+  color: #078716;
   text-align: center;
-  background-color: rgba(162, 230, 159, 0.571);
-  height: 450px;
-  width: 50%;
+}
+
+.detail-card .card h4 {
+  text-align: center;
+}
+
+.detail-card .card p {
+  margin-top: 10px;
+}
+
+.details {
+  background-color: rgba(177, 177, 141, 0.17);
+  width: 70%;
+  border-radius: 5px;
+}
+
+.edit-buttons {
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+#editButton {
+  background-color: #989ce7;
+  padding: 3px;
+  color: #3d1717;
+  font-family: "Rubik", sans-serif;
+  font-size: 13px;
+}
+
+#deleteButton {
+  background-color: #eb6678;
+  padding: 3px;
+  color: #3d1717;
+  font-family: "Rubik", sans-serif;
+  font-size: 13px;
 }
 
 .contacts {
@@ -43,23 +90,30 @@ footer {
   height: 450px;
   width: 50%;
   overflow-y: scroll;
+  margin-right: 10px;
+  border-radius: 5px;
 }
 
 .contacts .button {
-  margin-top: 5px;
+  margin-top: 8px;
   font-family: "Rubik", sans-serif;
   font-size: 13px;
-  background-color: rgba(238, 102, 102, 0.571);
+  background-color: rgba(131, 194, 122, 0.571);
 }
 
-.contacts .names ul {
-  text-align: left;
-  margin-left: 10px;
-  margin-top: 10px;
+.contacts .names {
+  margin-top: 15px;
 }
 
-.contacts .names li {
-  list-style: none;
+.contacts .names button {
+  border: none;
+  cursor: pointer;
+  margin-top: 3px;
+  border-radius: 2px;
+  font-size: 15px;
+  padding: 6px;
+  font-family: "Montserrat", sans-serif;
+  background-color: rgba(255, 255, 255, 0.557);
 }
 
 .form {
@@ -91,7 +145,7 @@ footer {
 
 body {
   background-color: #f8e5da;
-  font-family: "Encode Sans SC", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 header {
@@ -99,10 +153,7 @@ header {
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
-  width: 100%;
   margin: 25px;
-  -webkit-text-decoration: underline 2px #292623;
-          text-decoration: underline 2px #292623;
   font-size: 40px;
   color: #292623;
 }

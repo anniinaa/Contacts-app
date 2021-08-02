@@ -46,12 +46,14 @@ function App() {
             setSelectedContact={setSelectedContact}
             contactList={contactList}
           />
-          <Details
-            selectedContact={selectedContact}
-            setSelectedContact={setSelectedContact}
-            deleteContact={deleteContact}
-            className="details-app"
-          />
+          <div className="details">
+            <Details
+              selectedContact={selectedContact}
+              setSelectedContact={setSelectedContact}
+              deleteContact={deleteContact}
+              className="details-app"
+            />
+          </div>
         </div>
         <Footer />
       </div>

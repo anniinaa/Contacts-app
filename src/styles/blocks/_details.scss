@@ -2,16 +2,48 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: auto;
   width: 70%;
+  margin: auto;
 }
-
+.detail-card {
+  .card {
+    .contact-info {
+      font-size: 18px;
+      color: rgb(7, 135, 22);
+      text-align: center;
+    }
+    h4 {
+      text-align: center;
+    }
+    justify-content: center;
+    padding: 15px;
+    p {
+      margin-top: 10px;
+    }
+  }
+}
 .details {
+  background-color: rgba(177, 177, 141, 0.17);
+  width: 70%;
+  border-radius: 5px;
 }
-.details-app {
-  justify-content: center;
-  text-align: center;
-  background-color: rgba(162, 230, 159, 0.571);
-  height: 450px;
-  width: 50%;
+.edit-buttons {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+#editButton {
+  background-color: rgb(152, 156, 231);
+  padding: 3px;
+  color: rgb(61, 23, 23);
+  font-family: "Rubik", sans-serif;
+  font-size: 13px;
+}
+#deleteButton {
+  background-color: rgb(235, 102, 120);
+  padding: 3px;
+  color: rgb(61, 23, 23);
+  font-family: "Rubik", sans-serif;
+  font-size: 13px;
 }
